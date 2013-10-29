@@ -1,0 +1,120 @@
+<?xml version='1.0' encoding="ISO-8859-1"?>
+<jtlshop3plugin>
+	<Name>Trusted Shops API Integration</Name>
+	<Description>Integriert ein Trusted Shops Rich Snipet, das Daten zur Bewertung des Shops enthällt.</Description>
+	<Author>Kreativkonzentrat GbR, Niels Baumbach</Author>
+	<URL>http://www.kreativkonzentrat.de</URL>
+	<XMLVersion>100</XMLVersion>
+	<ShopVersion>311</ShopVersion>
+	<PluginID>kk_ts_api</PluginID>
+	<Install>
+		<Version nr="100"><CreateDate>2012-01-10</CreateDate></Version>
+		<Version nr="101"><CreateDate>2012-01-11</CreateDate></Version>
+		<Version nr="102"><CreateDate>2012-02-21</CreateDate></Version>
+		<Version nr="103"><CreateDate>2013-07-11</CreateDate></Version>
+		<Hooks>
+			<Hook id="140">add_snipet.php</Hook>
+		</Hooks>
+		<Adminmenu>
+			<Settingslink sort="1">
+				<Name>Einstellungen</Name>
+				<Setting type="selectbox" initialValue="Y" sort="1" conf="Y">
+					<Name>Snipet integrieren?</Name>
+					<Description>Soll das Rich Snipet integriert werden?</Description>
+					<ValueName>kk_add_snipet</ValueName>
+					<SelectboxOptions>
+						<Option value="Y" sort="1">Ja</Option>
+						<Option value="N" sort="2">Nein</Option>
+					</SelectboxOptions>
+				</Setting>
+				<Setting type="selectbox" initialValue="front" sort="2" conf="Y">
+					<Name>Wo einbinden?</Name>
+					<Description>Wo soll das Rich Snipet eingebunden werden? (Empfohlen: nur auf der Startseite)</Description>
+					<ValueName>kk_integration_mode</ValueName>
+					<SelectboxOptions>
+						<Option value="front" sort="1">Nur auf der Startseite</Option>
+						<Option value="all" sort="2">Überall</Option>
+					</SelectboxOptions>
+				</Setting>
+				<Setting type="text" initialValue="Bitte eingeben" sort="3" conf="Y">
+					<Name>Trusted Shops ID</Name>
+					<Description>Ihre Trusted Shops ID.</Description>
+					<ValueName>kk_trusted_shops_id</ValueName>
+				</Setting>
+				<Setting type="selectbox" initialValue="schemaOrgReviewAggregate" sort="4" conf="Y">
+					<Name>Template / Schema</Name>
+					<Description>Welches Schema soll verwendet werden?</Description>
+					<ValueName>kk_ts_api_template</ValueName>
+					<SelectboxOptions>
+						<Option value="rdfReviewAggregate" sort="1">RDF Review Aggregate</Option>
+						<Option value="schemaOrgReviewAggregate" sort="2">Schema.org Review Aggregate</Option>
+					</SelectboxOptions>
+				</Setting>
+				<Setting type="text" initialValue="Y" sort="5" conf="N">    
+					<Name>PHP Query</Name>
+					<Description></Description>
+					<ValueName>kk_headline</ValueName>
+				</Setting>
+				<Setting type="text" initialValue="#footer .last" sort="6" conf="Y">
+					<Name>CSS Selektor</Name>
+					<Description>CSS Selektor für den Inhalt.</Description>
+					<ValueName>php_query_selector</ValueName>
+				</Setting>
+				<Setting type="selectbox" initialValue="append" sort="7" conf="Y">
+					<Name>PHP Query Funktion</Name>
+					<Description>Welche Funktion soll für die Ersetzung des Inhalts verwendet werden?</Description>
+					<ValueName>php_query_function</ValueName>
+					<SelectboxOptions>
+						<Option value="append" sort="1">append() - Als als letztes Kind in Selektor einfügen</Option>
+						<Option value="prepend" sort="2">prepend() - Als erstes Kind in Selektor einfügen</Option>
+						<Option value="after" sort="3">after() - Nach Selektor einfügen</Option>
+						<Option value="before" sort="4">before() - Vor Selektor einfügen</Option>
+						<Option value="replaceWith" sort="4">replaceWith() - Selektor ersetzen</Option>
+					</SelectboxOptions>
+				</Setting>
+				<Setting type="text" initialValue="Y" sort="8" conf="N">    
+					<Name>Erweiterte Einstellungen</Name>
+					<Description></Description>
+					<ValueName>kk_headline</ValueName>
+				</Setting>
+				<Setting type="text" initialValue="1" sort="9" conf="Y">
+					<Name>Trusted Shops Timeout</Name>
+					<Description>Maximale Zeit um auf Antwort der Trusted Shops API zu warten.</Description>
+					<ValueName>kk_trusted_shops_max_timeout</ValueName>
+				</Setting>
+				<Setting type="text" initialValue="kk_ts_api_cache" sort="10" conf="Y">
+					<Name>Cache Verzeichnis</Name>
+					<Description>Das Verzeichnis in dem die Cachedatei gespeichert werden soll.</Description>
+					<ValueName>kk_ts_api_cache_dir</ValueName>
+				</Setting>
+				<Setting type="text" initialValue="3600" sort="11" conf="Y">
+					<Name>Cache Lifetime in Sekunden</Name>
+					<Description>Wie lang soll der Cache gueltig sein? In Sekunden (3600 = 1 Stunde).</Description>
+					<ValueName>kk_ts_api_cache_lifetime</ValueName>
+				</Setting>
+			</Settingslink>
+		</Adminmenu>
+		<Locales>
+			<Variable>
+				<Name>prefix</Name> 
+				<Description>Prefix des Snipets</Description> 
+				<VariableLocalized iso="GER">Kundenbewertungen von Trusted Shops: </VariableLocalized> 
+			</Variable>
+			<Variable>
+				<Name>from</Name> 
+				<Description></Description> 
+				<VariableLocalized iso="GER">von</VariableLocalized> 
+			</Variable>
+			<Variable>
+				<Name>based_on</Name> 
+				<Description></Description> 
+				<VariableLocalized iso="GER">ermittelt aus</VariableLocalized> 
+			</Variable>
+			<Variable>
+				<Name>ratings</Name> 
+				<Description></Description> 
+				<VariableLocalized iso="GER">Bewertungen</VariableLocalized> 
+			</Variable>
+		</Locales>
+	</Install>
+</jtlshop3plugin>
